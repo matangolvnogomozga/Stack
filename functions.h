@@ -1,3 +1,5 @@
+#include<errors.h>
+#include<colours.h>
 void SetColour(ConsoleColor text, ConsoleColor background)
 {
     HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
