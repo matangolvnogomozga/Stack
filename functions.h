@@ -1,6 +1,6 @@
 #include<errors.h>
 #include<colours.h>
-void SetColour(ConsoleColor text, ConsoleColor background)
+void SetColor(ConsoleColor text, ConsoleColor background)
 {
     HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute(hStdOut, (WORD)((background << 4) | text));
@@ -127,43 +127,43 @@ bool Stack<T>::Dump()
         printf("FAIL");
         return FAIL;
     }
-    SetColour(Cyan, Black);
+    SetColor(Cyan, Black);
     printf("\n\t\tDUMP\n");
-    SetColour(Green, Black);
+    SetColor(Green, Black);
     printf("%s", "Pointer of the stack:");
-    SetColour(Red, Black);
+    SetColor(Red, Black);
     printf("\t\t%p\n", stack);
-    SetColour(Green, Black);
+    SetColor(Green, Black);
     printf("%s", "Capacity of the stack:");
-    SetColour(Red, Black);
+    SetColor(Red, Black);
     printf("\t\t%d\n", capacity);
-    SetColour(Green, Black);
+    SetColor(Green, Black);
     printf("%s\t", "Number of elements in stack:");
-    SetColour(Red, Black);
+    SetColor(Red, Black);
     printf("%d\n", size);
-    SetColour(Green, Black);
+    SetColor(Green, Black);
     printf("%s\t", "Hash:");
-    SetColour(Red, Black);
+    SetColor(Red, Black);
     printf("\t\t\t%d\n", hash);
-    SetColour(Green, Black);
+    SetColor(Green, Black);
     printf("%s", "First canary:");
-    SetColour(Red, Black);
+    SetColor(Red, Black);
     printf("\t\t\t%d\n", CANARY_1);
-    SetColour(Green, Black);
+    SetColor(Green, Black);
     printf("%s", "Second canary:");
-    SetColour(Red, Black);
+    SetColor(Red, Black);
     printf("\t\t\t%d\n\n", CANARY_2);
 
-    SetColour(Blue, Black);
+    SetColor(Blue, Black);
     printf("%s\n", "Stack elements");
     for(int i = 0; i < size; ++i)
     {
-        SetColour(Green, Black);
+        SetColor(Green, Black);
         printf("Element number %d is ", i+1);
-        SetColour(Yellow, Black);
+        SetColor(Yellow, Black);
         Print(stack[i]);
     }
-    SetColour(Cyan, Black);
+    SetColor(Cyan, Black);
     printf("\n\t\tEND OF DUMP\n");
     if(OKCreate())
     {
