@@ -6,6 +6,8 @@
 #include<cassert>
 #include<math.h>
 
+#include<functions.h>
+
 long long RandomBig();
 void SetColour(ConsoleColor text, ConsoleColor background);
 
