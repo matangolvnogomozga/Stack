@@ -9,7 +9,7 @@
 #include<functions.h>
 
 long long RandomBig();
-void SetColour(ConsoleColor text, ConsoleColor background);
+void SetColor(ConsoleColor text, ConsoleColor background);
 
 const bool FAIL = false;
 const bool SUCCESS = true;
