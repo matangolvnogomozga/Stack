@@ -1,3 +1,5 @@
+#include<stack_class.h>
+#include<declaration.h>
 int main()
 {
     /// Creating stack:
