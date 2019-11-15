@@ -1,4 +1,4 @@
-enum Colour
+enum ConsoleColor
 {
     Black         = 0,
     Blue          = 1,
