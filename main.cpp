@@ -1,3 +1,8 @@
+/** This program
+ *create stack class
+ *and can do many interesting things with it
+ */
+
 #include<stack_class.h>
 #include<declaration.h>
 int main()
