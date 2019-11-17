@@ -70,7 +70,7 @@ bool Stack<T>::Create(size_t cap)
 template <typename T>
 long Stack<T>::Hash()
 {
-    return (size * 2 + CANARY_1 % 67 - CANARY_2 % 23 - capacity);
+    return (stack[0] * 64 + size * 2 + CANARY_1 % 67 - CANARY_2 % 23 - capacity - stack[size-1] % 48);
 }
 #endif // UNSAFE
 
