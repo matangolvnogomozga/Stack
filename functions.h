@@ -133,7 +133,7 @@ bool Stack<T>::Get(T *data)
     assert(data != NULL);
     if(OKPop())
         return FAIL;
-    *data = stack[size];
+    *data = stack[size-1];
     if(OKPop())
         return FAIL;
     return SUCCESS;
