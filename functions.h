@@ -186,7 +186,7 @@ bool Stack<T>::Clear()
 //!
 //-----------------------------------------------------
 template <typename T>
-size_t Stack<T>::Size(T *number)
+bool Stack<T>::Size(T *number)
 {
     assert(number != NULL);
     if(OKSize())
