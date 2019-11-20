@@ -24,7 +24,7 @@ class Stack
         bool Destroy();
         bool Get(T *data);
         bool Clear();
-        size_t Size(T *number);
+        bool Size(T *number);
         void Print(T data);
         bool Dump();
 
