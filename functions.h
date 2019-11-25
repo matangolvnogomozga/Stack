@@ -48,7 +48,7 @@ bool Stack<T>::Create(size_t cap)
 {
     size = 0;
     capacity = cap;
-    stack = (T *)calloc(cap, sizeof(T));
+    stack = (T*) new T [cap];
 
     #ifndef UNSAFE
     CANARY_1 = CANARYBEGIN1;
@@ -70,7 +70,7 @@ bool Stack<T>::Create(size_t cap)
 template <typename T>
 long Stack<T>::Hash()
 {
-    return (stack[0] * 64 + size * 2 + CANARY_1 % 67 - CANARY_2 % 23 - capacity - stack[size-1] % 48);
+    return (size * 2 + CANARY_1 % 67 - CANARY_2 % 23 - capacity - 465474 % 48);
 }
 #endif // UNSAFE
 
@@ -147,7 +147,7 @@ bool Stack<T>::Destroy()
 {
     if(OKDestroy())
         return FAIL;
-    free(stack);
+    delete [] stack;
     size = 0;
     capacity = 0;
 
@@ -278,10 +278,10 @@ template <typename T>
 int Stack<T>::PlusMemory(T* ptr)
 {
     assert(ptr != NULL);
-    realloc(ptr, 10*sizeof(int));
+    realloc(ptr, capacity + 10*sizeof(T));
     if(ptr == NULL)
     {
-        printf("NO_MEM_MORE");
+        printf("Memory is over\n");
         return NO_MEM_MORE;
     }
     else
@@ -301,34 +301,34 @@ int Stack<T>::OKCreate()
 {
     if(capacity <= 0)
     {
-        printf("ERR_CAP");
+        printf("Capacity is wrong\n");
         return ERR_CAP;
     }
     else if(size < 0)
     {
-        printf("ERR_SIZE");
+        printf("Size is wrong\n");
         return ERR_SIZE;
     }
     else if(size > capacity)
     {
-        printf("OVER_FLOW");
+        printf("Stack is overflowing\n");
         return OVER_FLOW;
     }
     #ifndef UNSAFE
     else if(CANARY_1 != CANARYBEGIN1 || CANARY_2 != CANARYBEGIN2)
     {
-        printf("ERR_CANARY");
+        printf("Canaries aren't coincide\n");
         return ERR_CANARY;
     }
     else if(hash != Hash())
     {
-        printf("ERR_HASH");
+        printf("Hash-sum isn't coincide\n");
         return ERR_HASH;
     }
     #endif // UNSAFE
     else if(stack == NULL)
     {
-        printf("ERR_PTR");
+        printf("The pointer to stack is NULL\n");
         return ERR_PTR;
     }
     else
@@ -340,34 +340,34 @@ int Stack<T>::OKPush()
 {
     if(capacity <= 0)
     {
-        printf("ERR_CAP");
+        printf("Capacity is wrong\n");
         return ERR_CAP;
     }
     else if(size < 0)
     {
-        printf("ERR_SIZE");
+        printf("Size is wrong\n");
         return ERR_SIZE;
     }
     else if(size > capacity)
     {
-        printf("OVER_FLOW");
+        printf("Stack is overflowing\n");
         return OVER_FLOW;
     }
     #ifndef UNSAFE
     else if(CANARY_1 != CANARYBEGIN1 || CANARY_2 != CANARYBEGIN2)
     {
-        printf("ERR_CANARY");
+        printf("Canaries aren't coincide\n");
         return ERR_CANARY;
     }
     else if(hash != Hash())
     {
-        printf("ERR_HASH");
+        printf("Hash-sum isn't coincide\n");
         return ERR_HASH;
     }
     #endif // UNSAFE
     else if(stack == NULL)
     {
-        printf("ERR_PTR");
+        printf("The pointer to stack is NULL\n");
         return ERR_PTR;
     }
     else if(size == capacity)
@@ -381,39 +381,39 @@ int Stack<T>::OKPop()
 {
     if(capacity <= 0)
     {
-        printf("ERR_CAP");
+        printf("Capacity is wrong\n");
         return ERR_CAP;
     }
     else if(size < 0)
     {
-        printf("ERR_SIZE");
+        printf("Size is wrong\n");
         return ERR_SIZE;
     }
     else if(size > capacity)
     {
-        printf("OVER_FLOW");
+        printf("Stack is overflowing\n");
         return OVER_FLOW;
     }
     #ifndef UNSAFE
     else if(CANARY_1 != CANARYBEGIN1 || CANARY_2 != CANARYBEGIN2)
     {
-        printf("ERR_CANARY");
+        printf("Canaries aren't coincide\n");
         return ERR_CANARY;
     }
     else if(hash != Hash())
     {
-        printf("ERR_HASH");
+        printf("Hash-sum isn't coincide\n");
         return ERR_HASH;
     }
     #endif // UNSAFE
     else if(stack == NULL)
     {
-        printf("ERR_PTR");
+        printf("The pointer to stack is NULL\n");
         return ERR_PTR;
     }
     else if(size == 0)
     {
-        printf("EMPTY");
+        printf("Stack is empty\n");
         return EMPTY;
     }
     else
@@ -425,7 +425,7 @@ int Stack<T>::OKDestroy()
 {
     if(stack == NULL)
     {
-        printf("ERR_PTR");
+        printf("The pointer to stack is NULL\n");
         return ERR_PTR;
     }
     else
@@ -437,7 +437,7 @@ int Stack<T>::OKSize()
 {
     if(size < 0)
     {
-        printf("ERR_SIZE");
+        printf("Size is wrong\n");
         return ERR_SIZE;
     }
     else
