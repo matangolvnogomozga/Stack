@@ -278,7 +278,7 @@ template <typename T>
 int Stack<T>::PlusMemory(T* ptr)
 {
     assert(ptr != NULL);
-    realloc(ptr, capacity + 10*sizeof(T));
+    ptr = (T *)realloc(ptr, capacity + 10*sizeof(T));
     if(ptr == NULL)
     {
         printf("Memory is over\n");
