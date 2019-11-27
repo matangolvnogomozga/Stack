@@ -12,6 +12,8 @@ class Stack
 
         #ifndef UNSAFE
         long hash;
+        long long CANARYBEGIN1 = RandomBig();
+        long long CANARYBEGIN2 = RandomBig();
         long long CANARY_2;
         long Hash();
         #endif // UNSAFE
