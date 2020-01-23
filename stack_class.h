@@ -11,14 +11,17 @@ class Stack
         T *stack;
 
         #ifndef UNSAFE
-        long hash;
+        long long hash;
         long long CANARYBEGIN1 = RandomBig();
         long long CANARYBEGIN2 = RandomBig();
-        long long CANARY_2;
-        long Hash();
+        long long Hash();
         #endif // UNSAFE
 
         int PlusMemory(T* ptr);
+
+        #ifndef UNSAFE
+        long long CANARY_2;
+        #endif // UNSAFE
     public:
         bool Create(size_t cap);
         bool Push(T data);
