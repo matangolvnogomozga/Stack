@@ -3,20 +3,30 @@
  *and can do many interesting things with it
  */
 
-#include<stack_class.h>
-#include<declaration.h>
+#include"declaration.h"
+
 int main()
 {
     /// Creating stack:
     /// Enter capacity
     size_t cap;
     printf("Enter maximal number of elements in stack\n");
-    scanf("%d", &cap);
+    bool check = scanf("%d", &cap);
+    if(check == FALSE)
+    {
+        printf("Wrong entry\n");
+        return 1;
+    }
 
     /// Number of elements you want to put on stack
     size_t size;
     printf("Enter number of elements\n");
-    scanf("%d", &size);
+    check = scanf("%d", &size);
+    if(check == FALSE)
+    {
+        printf("Wrong entry\n");
+        return 1;
+    }
     if(size > cap)
     {
         printf("Wrong entry");
@@ -26,7 +36,7 @@ int main()
     /// Test functions
     /// Test CREATE
     Stack<int> Stack;
-    bool check = Stack.Create(cap);
+    check = Stack.Create(cap);
     if(check == FALSE)
         return 1;
 
