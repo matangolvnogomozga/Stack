@@ -1,5 +1,5 @@
-#include<errors.h>
-#include<colours.h>
+#include"errors.h"
+
 //-----------------------------------------------------
 //! Function "SetColor" can change printing colour
 //!
@@ -21,11 +21,11 @@ void SetColor(ConsoleColor text, ConsoleColor background)
 //-----------------------------------------------------
 long long RandomBig()
 {
-    static bool first_start = false;
-    if (first_start == false)
+    static bool first = false;
+    if (first == false)
     {
         srand(time(0));
-        first_start = true;
+        first = true;
     }
 
     long long num = rand() % 9 + 1;
@@ -68,7 +68,7 @@ bool Stack<T>::Create(size_t cap)
 //-----------------------------------------------------
 #ifndef UNSAFE
 template <typename T>
-long Stack<T>::Hash()
+long long Stack<T>::Hash()
 {
     return (size * 2 + CANARY_1 % 67 - CANARY_2 % 23 - capacity - 465474 % 48);
 }
@@ -239,15 +239,15 @@ bool Stack<T>::Dump()
     SetColor(Green, Black);
     printf("%s\t", "Hash:");
     SetColor(Red, Black);
-    printf("\t\t\t%d\n", hash);
+    printf("\t\t\t%Ld\n", hash);
     SetColor(Green, Black);
     printf("%s", "First canary:");
     SetColor(Red, Black);
-    printf("\t\t\t%d\n", CANARY_1);
+    printf("\t\t\t%Ld\n", CANARY_1);
     SetColor(Green, Black);
     printf("%s", "Second canary:");
     SetColor(Red, Black);
-    printf("\t\t\t%d\n\n", CANARY_2);
+    printf("\t\t\t%Ld\n\n", CANARY_2);
     #endif // UNSAFE
 
     SetColor(Blue, Black);
